@@ -12,9 +12,9 @@ import android.os.Build
 import android.preference.PreferenceManager
 import android.util.Log
 import androidx.annotation.Nullable
+import com.dwarsh.webrtcsample.R
 import org.webrtc.ThreadUtils
-import java.util.*
-import kotlin.collections.HashSet
+import java.util.Collections
 
 
 class RTCAudioManager(context: Context) {
@@ -365,7 +365,7 @@ class RTCAudioManager(context: Context) {
             }
         }
         // Store state which is set to true if the device list has changed.
-        var audioDeviceSetUpdated = audioDevices != newAudioDevices
+        val audioDeviceSetUpdated = audioDevices != newAudioDevices
         // Update the existing audio device set.
         audioDevices = newAudioDevices
         // Correct user selected audio devices if needed.

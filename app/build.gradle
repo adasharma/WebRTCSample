@@ -1,18 +1,18 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id 'kotlin-android-extensions'
 }
 apply plugin: 'com.google.gms.google-services'
 
 android {
-    compileSdkVersion 30
+    namespace = ("com.dwarsh.webrtcsample")
+    compileSdkVersion 34
     buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.dwarsh.webrtcsample"
         minSdkVersion 21
-        targetSdkVersion 30
+        targetSdkVersion 34
         versionCode 1
         versionName "1.0"
 
@@ -27,6 +27,10 @@ android {
     }
     dataBinding {
         enabled = true
+    }
+
+    buildFeatures {
+        viewBinding true
     }
 
     packagingOptions {

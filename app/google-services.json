@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "340423339566",
+    "project_id": "webrtc-sample-addd0",
+    "storage_bucket": "webrtc-sample-addd0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:340423339566:android:dea1b9c08e477a87f979bf",
+        "android_client_info": {
+          "package_name": "com.dwarsh.webrtcsample"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4HfyT464FDi-o-43K0ovFoj2jvB_-mvM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

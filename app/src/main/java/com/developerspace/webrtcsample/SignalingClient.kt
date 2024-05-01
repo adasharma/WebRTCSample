@@ -42,17 +42,19 @@ class SignalingClient(
 //        }
 //    }
 
+    @OptIn(ObsoleteCoroutinesApi::class)
     private val sendChannel = ConflatedBroadcastChannel<String>()
 
     init {
         connect()
     }
 
+    @OptIn(ObsoleteCoroutinesApi::class)
     private fun connect() = launch {
         db.enableNetwork().addOnSuccessListener {
             listener.onConnectionEstablished()
         }
-        val sendData = sendChannel.offer("")
+        val sendData = sendChannel.trySend("").isSuccess
         sendData.let {
             Log.v(this@SignalingClient.javaClass.simpleName, "Sending: $it")
 //            val data = hashMapOf(
@@ -84,7 +86,7 @@ class SignalingClient(
                                 listener.onOfferReceived(SessionDescription(
                                     SessionDescription.Type.OFFER,data["sdp"].toString()))
                             SDPtype = "Offer"
-                        } else if (data?.containsKey("type") &&
+                        } else if (data.containsKey("type") &&
                             data.getValue("type").toString() == "ANSWER") {
                                 listener.onAnswerReceived(SessionDescription(
                                     SessionDescription.Type.ANSWER,data["sdp"].toString()))
@@ -133,7 +135,7 @@ class SignalingClient(
 //                        if (data?.containsKey("type")!! && data.getValue("type").toString() == "OFFER") {
 //                            Log.e(TAG, "connect: OFFER - $data")
 //                            listener.onOfferReceived(SessionDescription(SessionDescription.Type.OFFER,data["sdp"].toString()))
-//                        } else if (data?.containsKey("type") && data.getValue("type").toString() == "ANSWER") {
+//                        } else if (data.containsKey("type") && data.getValue("type").toString() == "ANSWER") {
 //                            Log.e(TAG, "connect: ANSWER - $data")
 //                            listener.onAnswerReceived(SessionDescription(SessionDescription.Type.ANSWER,data["sdp"].toString()))
 //                        }
